@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Trip model
-class UserPickedTeams extends Model{}
+class UserPickedTeams extends Model { }
 
 // create fields/columns for Trip model
 UserPickedTeams.init(
@@ -13,7 +13,7 @@ UserPickedTeams.init(
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
@@ -21,7 +21,7 @@ UserPickedTeams.init(
         unique: false
       }
     },
-    team_id: {
+    teamId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'team',
@@ -30,10 +30,10 @@ UserPickedTeams.init(
       }
     },
     week: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      }
-      
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
+
   },
   {
     sequelize,
