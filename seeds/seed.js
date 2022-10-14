@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Team } = require('../models');
+const { User, Team, UserPickedTeams } = require('../models');
 
 const userData = require('./userData.json');
 const teamData = require('./teamData.json');
+const pickData = require("./userPickedTeamData.json")
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -19,6 +20,12 @@ const seedDatabase = async () => {
   for (const team of teamData) {
     await Team.create({
       ...team,
+    });
+  }
+
+  for (const pick of pickData) {
+    await UserPickedTeams.create({
+      ...pick,
     });
   }
 
