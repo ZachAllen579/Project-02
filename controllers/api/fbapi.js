@@ -6,3 +6,8 @@ const options = {
         'Accept': 'application/xml'
     }
 };
+
+fetch('https://www.broadage.com/football/match/list/results?date={{dd/mm/yyyy}}', options)
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
