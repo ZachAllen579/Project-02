@@ -7,7 +7,6 @@ router.get('/', withAuth, async (req, res) => {
     const allTeamsData = await Team.findAll({
     });
     const allTeams = allTeamsData.map(team => team.get({plain:true}))
-    console.log(allTeams)
 
     res.status(200).json(allTeams);
   } catch (err) {
