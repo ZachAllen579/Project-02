@@ -17,3 +17,6 @@ const pickYourTeam = async (event) => {
 document
   .querySelector('.pickYourTeam')
   .addEventListener('click', pickYourTeam);
+
+
+  //testtesttest
