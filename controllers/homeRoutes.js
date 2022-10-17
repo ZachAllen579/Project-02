@@ -78,7 +78,9 @@ router.get('/teamselect', withAuth, async (req, res) => {
     // const user = userData.get({ plain: true });
     // console.log("USER=======",user)
     res.render('teamselect', {
-      logged_in: true
+      logged_in: true,
+      allTeams,
+      allUserPicks
     });
   } catch (err) {
     console.log(err)
