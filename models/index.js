@@ -26,5 +26,7 @@ Team.belongsToMany(User, {
 
 
 
+
+
 module.exports = { User, Team, UserPickedTeams};
 

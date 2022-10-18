@@ -6,17 +6,18 @@ router.get("/", withAuth, async (req,res)=> {
 const allUserPickData = await UserPickedTeams.findAll({})
 
 const userPicks = allUserPickData.map(pick => pick.get({plain:true}))
-console.log(userPicks)
+// console.log(userPicks)
 })
 
 router.post('/', withAuth, async (req, res) => {
   try {
     const userPickedTeam = await UserPickedTeams.create({
       // changed from newuserpickedteams to userpickedteams
-      ...req.body,
+      teamId:req.body.teamSelected,
+      week:req.body.week,
       userId: req.session.user_id,
     });
-
+    console.log(userPickedTeam)
     res.status(200).json(userPickedTeam);
   } catch (err) {
     console.log(err)

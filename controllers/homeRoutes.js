@@ -65,15 +65,16 @@ router.get('/teamselect', withAuth, async (req, res) => {
 
 
     const allUserPicksData = await UserPickedTeams.findAll(
-        {where:{userId:req.session.user_id}}
+      {where:{userId:req.session.user_id}},
+      // {include: [{model:Team} ]}
     )
 
     const allUserPicks = allUserPicksData.map(team => team.get({plain:true}))
-    console.log(allUserPicks);
+    // console.log(allUserPicks);
     
     console.log(allTeams);
     const teamsUsed = allTeams.filter(x => allUserPicks.some((y) => x.id === y.teamId))
-    console.log(teamsUsed)
+    // console.log(teamsUsed)
 
     // console.log(req.session.user_id)//current logged in user id
     // Find the logged in user based on the session ID
