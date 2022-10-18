@@ -1,22 +1,62 @@
 
     <header>
-      <h1> <display:block> Teams you've used</display:block> </h1>
+      <h1> <display:block><strong>Teams you've used</strong> </display:block> </h1>
       <div class="card">
-        <label for="Teams You've Used"></label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+        <ul>
+            {{#each UserPickedTeams}}
+             {{!-- changed from teamsUsed --}}
+            
+            <li> {{ this.name }} </li>
+            {{/each}}
+          </ul>
       </div>
-      <h1><display:block>Teams available to you</display:block></h1>
       <div class="card">
-        <label for="Teams Available to you"></label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+          <form>
+            <fieldset>
+              <legend><h1><strong>Teams available to you</strong></h1>
+              </legend>
+              {{#each allTeams}}
+              <input type="radio" id={{this.id}} name="availableTeams" value={{this.name}}>
+              <label for={{this.name}}>{{this.name}}</label>
+              </br>
+              {{/each}}
+            </fieldset>
+            <div class="form-group">
+    <button class="Select Team border-solid border-2 border-gray-800 rounded-md text-white bg-gray-800 hover:bg-lightblue" type="submit" id="teamSelectBtn">Select Team</button>
+  </div>
+          </form>
+          
       </div>
       
+<<<<<<< HEAD
+        
+=======
         <div class="form-group">
     <button class="selectTeam border-solid border-2 border-gray-800 rounded-md text-white bg-gray-800 hover:bg-lightblue" type="submit">Select Team</button>
   </div>
+>>>>>>> 6e4726aab2f683591c5419c78d771a6b33a0d389
      </header>
 
- 
+ <script type="text/javascript">
+  const btn = document.getElementById("teamSelectBtn");
+
+  btn.addEventListener("click", () => {
+    console.log("hello")
+  })
+
+  const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+  const data = new FormData(form);
+  const teamSelected = document.querySelector('input[name="availableTeams"]:checked').id;
+  alert("selected team id " + teamSelected)
+
+  //have to insert post request to SQL Database here and then reload the page after to have updated results
+
+
+  event.preventDefault();
+}, false);
+ </script>
  <script src="./js/teamSelect.js"></script>
 
  

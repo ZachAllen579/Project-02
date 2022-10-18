@@ -55,12 +55,12 @@ router.get('/', async (req, res) => {
 // });
 router.get('/teamselect', withAuth, async (req, res) => {
   try {
-    const allTeamsData = await Team.findAll(
+    const allTeamsData = await Team.findAll()
+    
 
-    )
 
-    const allTeams = allTeamsData.map(team => team.get({plain:true}))
-    console.log(allTeams)
+    const allTeams = allTeamsData.map(team => team.get({plain:true})).slice(0,32);
+
 
 
 
@@ -69,7 +69,12 @@ router.get('/teamselect', withAuth, async (req, res) => {
     )
 
     const allUserPicks = allUserPicksData.map(team => team.get({plain:true}))
-    console.log(allUserPicks)
+    console.log(allUserPicks);
+    
+    console.log(allTeams);
+    const teamsUsed = allTeams.filter(x => allUserPicks.some((y) => x.id === y.teamId))
+    console.log(teamsUsed)
+
     // console.log(req.session.user_id)//current logged in user id
     // Find the logged in user based on the session ID
     // const userData = await User.findByPk(req.session.user_id, {
@@ -80,13 +85,17 @@ router.get('/teamselect', withAuth, async (req, res) => {
     res.render('teamselect', {
       logged_in: true,
       allTeams,
-      allUserPicks
+      allUserPicks,
+      teamsUsed
     });
   } catch (err) {
     console.log(err)
     res.status(500).json(err);
   }
 });
+
+//function to select a team
+// router.post('/teamselect', withAuth, async(req,res))
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -123,5 +132,11 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+// router.get('teamselect', withAuth, (req, res) => {
+
+//   const currentMatchups = await Team.
+
+// })
 
 module.exports = router;

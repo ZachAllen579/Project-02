@@ -11,12 +11,13 @@ console.log(userPicks)
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newuserPickedTeam = await UserPickedTeams.create({
+    const userPickedTeam = await UserPickedTeams.create({
+      // changed from newuserpickedteams to userpickedteams
       ...req.body,
       userId: req.session.user_id,
     });
 
-    res.status(200).json(newuserPickedTeam);
+    res.status(200).json(userPickedTeam);
   } catch (err) {
     console.log(err)
     res.status(400).json(err);
