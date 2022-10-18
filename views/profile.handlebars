@@ -1,62 +1,33 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+
+<div class="form-group">
+    <button class="pickYourTeam border-solid border-2 border-gray-800 rounded-md text-white bg-gray-800 hover:bg-lightblue" type="submit">PICK YOUR TEAM!!!</button>
   </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Project:</h3>
-
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
-      </div>
-      <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="row my-4">
-    <div class="col-md-6 mx-4"></div>
-    <h1>Current Week Matchups</h1>
-    
+  <div class="container">
+      <h2>This Week's NFL Matchups</h2>
+     <li>
+      <ul>Commanders vs Bears</ul>
+      <ul>Ravens vd Giants</ul>
+      <ul>Jaguars Vs Colts</ul>
+      <ul>Patriots vs Browns</ul>
+      <ul>Bengals vs Saints</ul>
+      <ul>Buccaneers vs Steelers</ul>
+      <ul>49ers vs Falcons</ul>
+      <ul>Jets vs Packers</ul>
+      <ul>Vikings vs Dolphins</ul>
+      <ul>Panthers vs Rams</ul>
+      <ul>Cardinals vs Seahawks</ul>
+      <ul>Bills vs Cheifs</ul>
+      <ul>Cowboys vs Eagles</ul>
+      <ul>Chargers vs Broncos</ul>
+     </li>
   </div>
 
 
 
   
 
-  {{#if projects.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
+  
 
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-  <div class="form-group">
-    <button class="pickYourTeam border-solid border-2 border-gray-800 rounded-md text-white bg-gray-800 hover:bg-lightblue" type="submit">PICK YOUR TEAM!!!</button>
-  </div>
 
 <script src="./js/profile.js"></script>
+
