@@ -3,7 +3,9 @@
       <h1> <display:block><strong>Teams you've used</strong> </display:block> </h1>
       <div class="card">
         <ul>
-            {{#each teamsUsed}}
+            {{#each UserPickedTeams}}
+             {{!-- changed from teamsUsed --}}
+            
             <li> {{ this.name }} </li>
             {{/each}}
           </ul>
